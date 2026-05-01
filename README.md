@@ -62,19 +62,19 @@ A full-stack web application built for managing projects and tasks within a team
 
 ---
 
-## Deployment on Render
+## Deployment on Vercel (Free)
 
-This project is configured to be deployed easily using **Render** via a Blueprint (`render.yaml`). This approach deploys both the Node.js backend and the React frontend simultaneously.
+This project has been uniquely configured to deploy both the frontend React application and the backend Node.js API to **Vercel** completely for free, using Vercel's Serverless Functions. Both will run on the exact same domain.
 
 ### Steps to Deploy:
 
-1. **Database Setup:** Render does not provide a free database. Create a free MongoDB cluster on [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/register) and get your connection string.
-2. **Push to GitHub:** Push your entire project (including the `render.yaml` file) to a GitHub repository.
-3. **Render Dashboard:** Log in to [Render](https://dashboard.render.com/) and click **New > Blueprint**.
-4. **Connect Repository:** Connect your GitHub account and select your repository.
-5. **Environment Variables:** Render will read the `render.yaml` file and prompt you for the necessary secrets:
-   - `MONGODB_URI`: Your MongoDB Atlas connection string.
-   - `JWT_SECRET`: A strong, random secret key for your sessions.
-6. **Deploy:** Click apply. Render will automatically build the frontend, build the backend, and link them together!
-
-*(Alternatively, you can deploy the `frontend` folder to **Vercel** and the `backend` folder to **Render** as a web service. Just remember to add the `VITE_API_URL` environment variable to your Vercel project pointing to your deployed backend URL).*
+1. **Database Setup:** You still need a database! Create a free MongoDB cluster on [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/register) and copy your connection string.
+2. **Push to GitHub:** Commit and push this entire repository to your own GitHub account.
+3. **Vercel Dashboard:** Log in to [Vercel](https://vercel.com/) and click **Add New > Project**.
+4. **Import Repository:** Select your GitHub repository.
+5. **Configuration:** 
+   - Vercel will automatically detect the configuration. Leave the Build Command and Output Directory as they are (it will read the root `package.json`).
+   - Open the **Environment Variables** dropdown and add:
+     - `MONGODB_URI`: Your MongoDB Atlas connection string.
+     - `JWT_SECRET`: A strong, random secret key for your sessions.
+6. **Deploy:** Click **Deploy**. Vercel will build the frontend and set up the backend serverless functions automatically!

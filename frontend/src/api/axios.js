@@ -1,12 +1,8 @@
 import axios from 'axios';
 
-let baseURL = 'http://localhost:5000/api';
-
-if (import.meta.env.VITE_API_HOST) {
-  baseURL = `https://${import.meta.env.VITE_API_HOST}/api`;
-} else if (import.meta.env.VITE_API_URL) {
-  baseURL = import.meta.env.VITE_API_URL;
-}
+// When deployed on Vercel, the frontend and backend share the same domain, so we can just use '/api'.
+// In local development (Vite), we need to point to the local backend running on port 5000.
+const baseURL = import.meta.env.DEV ? 'http://localhost:5000/api' : '/api';
 
 const api = axios.create({
   baseURL,
